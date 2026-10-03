@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": "6ebfa183-d2b2-448c-8d7e-3e4e3cad6b5c",
+    "username": "namn63657",
+    "email": "namn63657@gmail.com",
+    "passwordHash": "ba9031d89c0c039f57731d3e043ca87b5576cf44f4a7e0ae4b6d37f9caa153da225dadd976874776f317de679c67a0b9c3d688f7164a7a898fcf2a3ef27fe63b",
+    "salt": "ef6a1acc72b7e24b3e7887c4b33287c8",
+    "avatar": "",
+    "role": "admin",
+    "banned": false,
+    "created_at": "2026-10-03T04:00:46.511Z",
+    "last_ip": ""
+  }
+]

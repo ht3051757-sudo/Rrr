@@ -1,31 +1,19 @@
-# HOANG MOD — bản all-in-one
+# HOANG MOD / UGPHONE MOD — Shared multi-device Node version
 
-## Chức năng đã tích hợp
-- Đăng ký/đăng nhập dùng chung qua Node API.
-- Tên tài khoản 3–12 ký tự; mật khẩu tối thiểu 6 ký tự.
-- Session server-side, tự gia hạn và hết hạn.
-- Admin tạo từ biến môi trường `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `ADMIN_USERNAME`. Không nhúng mật khẩu vào frontend.
-- Danh sách thành viên chung, role, BAN tài khoản.
-- BAN IP thật trên backend + gỡ BAN IP.
-- Bài/menu: đăng, ẩn/hiện, xóa, lấy link. Mỗi lượt lấy link được ghi vào `link_claims.json` với username, mục và thời gian.
-- KEY theo ngày và giới hạn lượt.
-- Chat chung + ảnh + thông báo Admin.
-- Trạng thái server/maintenance.
-- TOP SERVER cho mini game khủng long.
-- Đoán số, tung xu, kéo-búa-bao.
-- Giao diện aura, Zalo và mobile.
+This build does **not** require Supabase. Registration, login, members, admin, posts, chat, keys and server status use the same Node backend and JSON data store.
 
-## Chạy
+## Run
 ```bash
 npm install
 npm start
 ```
-Sau đó mở `http://localhost:3000`.
+Open `http://localhost:3000`.
 
-## Deploy
-Frontend và backend nên chạy cùng Node server. GitHub Pages không chạy `server.js`.
-Nếu deploy trên host có filesystem tạm thời, JSON có thể mất sau restart/redeploy; hãy dùng ổ đĩa persistent hoặc chuyển DATA_DIR sang volume/database bền vững.
+## Important for multiple devices
+GitHub Pages cannot run `server.js`. Deploy this `ug` folder to a Node.js host/VPS/hosting service. Then either serve the frontend from that same Node server (recommended), or set `UG_API_BASE_URL` in `config.js` to the public backend URL.
 
+## Admin
+Set `ADMIN_SETUP_TOKEN`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, and optionally `ADMIN_USERNAME` in the server environment. Then call the bootstrap endpoint once with the setup token, or promote an existing account through the server-side data store. Never put the setup token or server secret in frontend code.
 
-## Quan trọng khi dùng GitHub Pages
-GitHub Pages không chạy Node.js. Backend phải được deploy riêng. Bản này đã đặt URL mặc định là `https://hoang-mod-backend.onrender.com` và có thể override bằng `?api=https://...`.
+## Data
+`data/users.json`, `sessions.json`, `posts.json`, `messages.json`, `keys.json`, and `server_state.json` are shared server-side data. Back them up. For serious production use, replace JSON storage with a real database and add HTTPS/rate limiting.

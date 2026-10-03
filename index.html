@@ -19,7 +19,7 @@
 <button onclick="show('auth')">👤 ĐĂNG NHẬP / ĐĂNG KÝ</button></div><div id="keyBox" class="keybox hidden"></div>
 <div id="stats" class="muted"></div></div>
 <div class="zaloCard"><div><div class="zaloIcon">💬</div><div><span class="sectionKicker">CỘNG ĐỒNG</span><h2>Tham gia nhóm Zalo</h2><p>Cập nhật menu, thông báo và hỗ trợ nhanh từ cộng đồng UGPHONE MOD.</p></div></div><a href="https://zalo.me/g/naio8qpbb6wwjme4vsyf" target="_blank" rel="noopener noreferrer" class="primary zaloBtn">VÀO NHÓM ZALO ↗</a></div>
-<div class="card" style="max-width:1100px;margin:20px auto 7vh"><div class="chatHead"><div><h2>📦 Bài đăng mới</h2><small>Admin cập nhật menu, hình ảnh và link tại đây.</small></div></div><div id="postGrid" class="postGrid"></div><div id="claimInfo" class="keybox hidden" style="font-size:14px;letter-spacing:0;margin-top:18px"></div></div></section>
+<div class="card" style="max-width:1100px;margin:20px auto 7vh"><div class="chatHead"><div><h2>📦 Bài đăng mới</h2><small>Admin cập nhật menu, hình ảnh và link tại đây.</small></div></div><div id="postGrid" class="postGrid"></div></div></section>
 
 <section id="auth" class="page"><div class="card"><h2>Tài khoản</h2>
 <input id="username" maxlength="12" minlength="3" placeholder="Tên tài khoản (3-12 ký tự)" autocomplete="username">
@@ -52,7 +52,7 @@
 <label><input id="postHot" type="checkbox" style="width:auto;margin-right:8px">HOT</label>
 <button class="primary full" onclick="publishPost()">ĐĂNG BÀI</button>
 </div><small class="chatHint">Sau khi đăng, bài sẽ xuất hiện ngay ở trang chủ theo dạng thẻ 2 cột giống mẫu.</small><div id="adminPostList"></div></div><hr>
-<div id="adminSectionBroadcast"><h3>📢 Gửi tới tất cả mọi người</h3><div class="keyForm"><input id="adminBroadcast" maxlength="500" placeholder="Thông báo sẽ hiện realtime trên mọi máy" onkeydown="if(event.key==='Enter')adminBroadcastSend()"><button class="primary" onclick="adminBroadcastSend()">GỬI TOÀN HỆ THỐNG</button></div><small class="chatHint">Tin được lưu vào database và phát realtime tới mọi máy.</small></div><hr><div id="adminSectionChat"><h3>💬 Chat gần đây</h3><div id="adminChat"></div></div><hr><div id="adminSectionUsers"><h3>👥 Tài khoản / hoạt động</h3><div id="users"></div></div><hr><div id="adminSectionClaims"><h3>🔗 Lịch sử lấy link</h3><div id="adminClaims"></div></div><hr><div id="adminSectionServer"><h3>🖥️ Trạng thái server</h3><div id="apiStatus" class="muted">API: đang kiểm tra…</div></div></div>
+<div id="adminSectionBroadcast"><h3>📢 Gửi tới tất cả mọi người</h3><div class="keyForm"><input id="adminBroadcast" maxlength="500" placeholder="Thông báo sẽ hiện realtime trên mọi máy" onkeydown="if(event.key==='Enter')adminBroadcastSend()"><button class="primary" onclick="adminBroadcastSend()">GỬI TOÀN HỆ THỐNG</button></div><small class="chatHint">Tin được lưu vào database và phát realtime tới mọi máy.</small></div><hr><div id="adminSectionChat"><h3>💬 Chat gần đây</h3><div id="adminChat"></div></div><hr><div id="adminSectionUsers"><h3>👥 Tài khoản / hoạt động</h3><div id="users"></div></div><hr><div id="adminSectionServer"><h3>🖥️ Trạng thái server</h3><div id="apiStatus" class="muted">API: đang kiểm tra…</div></div></div>
 </div></section>
 </main><div id="profileModal" class="modal hidden" onclick="if(event.target===this)closeProfile()"><div class="modalInner"><button class="modalClose" onclick="closeProfile()">✕</button><div id="profileModalBody"></div></div></div><div id="toast"></div><script src="config.js"></script><script src="app.js"></script>
 </body></html>
