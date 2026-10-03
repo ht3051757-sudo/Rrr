@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#06030d"><title>UGPHONE MOD • Daily Key</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="particles"></canvas><div class="aurora a1"></div><div class="aurora a2"></div><div class="noise"></div>
+<header><div class="brand">UGPHONE MOD</div><nav>
+<button onclick="show('home')">TRANG CHỦ</button><button id="authNav" onclick="show('auth')">ĐĂNG KÝ / ĐĂNG NHẬP</button><button id="accountNav" class="hidden" onclick="show('auth')">👤 TÀI KHOẢN</button>
+<button onclick="show('members')">👥 THÀNH VIÊN</button><button onclick="show('admin')">ADMIN</button><button onclick="show('chat')">CHAT</button><button onclick="show('games')">🎮 MINI GAME</button>
+</nav></header>
+<main>
+<section id="home" class="page active"><div class="hero reveal">
+<div class="heroGlow"><div class="badge">✦ SHARED ONLINE SYSTEM</div><div class="heroStatus"><span></span> HỆ THỐNG ĐANG HOẠT ĐỘNG</div></div><h1>UGPHONE MOD</h1><p>NHẬN KEY • MENU • CẬP NHẬT MỖI NGÀY</p>
+<div class="live"><span></span> <b id="onlineCount">0</b> người đang hoạt động</div>
+<div class="actions"><button class="primary magnetic" onclick="claimKey()">⚡ NHẬN KEY HÔM NAY</button>
+<button onclick="show('auth')">👤 ĐĂNG NHẬP / ĐĂNG KÝ</button></div><div id="keyBox" class="keybox hidden"></div>
+<div id="stats" class="muted"></div></div>
+<div class="zaloCard"><div><div class="zaloIcon">💬</div><div><span class="sectionKicker">CỘNG ĐỒNG</span><h2>Tham gia nhóm Zalo</h2><p>Cập nhật menu, thông báo và hỗ trợ nhanh từ cộng đồng UGPHONE MOD.</p></div></div><a href="https://zalo.me/g/naio8qpbb6wwjme4vsyf" target="_blank" rel="noopener noreferrer" class="primary zaloBtn">VÀO NHÓM ZALO ↗</a></div>
+<div class="card" style="max-width:1100px;margin:20px auto 7vh"><div class="chatHead"><div><h2>📦 Bài đăng mới</h2><small>Admin cập nhật menu, hình ảnh và link tại đây.</small></div></div><div id="postGrid" class="postGrid"></div><div id="claimInfo" class="keybox hidden" style="font-size:14px;letter-spacing:0;margin-top:18px"></div></div></section>
+
+<section id="auth" class="page"><div class="card"><h2>Tài khoản</h2>
+<input id="username" maxlength="12" minlength="3" placeholder="Tên tài khoản (3-12 ký tự)" autocomplete="username">
+<input id="email" type="email" placeholder="Email">
+<input id="password" type="password" placeholder="Mật khẩu" autocomplete="current-password">
+<div class="row"><button class="primary" onclick="register()">TẠO TÀI KHOẢN</button><button onclick="login()">ĐĂNG NHẬP</button><button onclick="logout()">ĐĂNG XUẤT</button></div>
+<p id="authMsg"></p><div id="profileBox" class="profileBox"></div></div></section>
+
+<section id="members" class="page"><div class="card membersCard"><div class="chatHead"><div><h2>👥 THÀNH VIÊN</h2><small>Tất cả tài khoản đã đăng ký — Admin được hiển thị riêng.</small></div><button onclick="loadPublicUsers()">↻ LÀM MỚI</button></div><div id="publicUsers" class="publicUsers"><p class="muted">Đang tải danh sách...</p></div></div></section>
+
+<section id="games" class="page"><div class="card gamesCard"><div class="chatHead"><div><h2>🎮 MINI GAME • KHỦNG LONG</h2><small>Nhảy qua xương rồng và đua TOP server.</small></div><span class="gameBadge">🏆 TOP SERVER</span></div><div class="dinoLayout"><div class="dinoGameBox"><div class="dinoHud"><span>ĐIỂM <b id="dinoScore">0</b></span><span>BEST <b id="dinoBest">0</b></span></div><canvas id="dinoCanvas" width="900" height="280" aria-label="Mini game khủng long"></canvas><button class="primary dinoStart" onclick="startDinoGame()">▶ CHƠI / CHƠI LẠI</button><p id="dinoStatus" class="muted">Nhấn nút hoặc chạm màn hình để bắt đầu • Nhảy: Space / ↑ / chạm</p></div><div class="leaderboardBox"><div class="leaderboardTitle"><div><span class="sectionKicker">BẢNG XẾP HẠNG</span><h3>🏆 TOP SERVER</h3></div><button onclick="loadDinoLeaderboard()">↻</button></div><div id="dinoLeaderboard" class="leaderboard"><p class="muted">Đang tải...</p></div></div></div><div class="legacyGames"><div class="gameGrid"><div class="gameBox"><h3>🎯 Đoán số</h3><p>Đoán một số từ 1–10.</p><input id="guessNumber" type="number" min="1" max="10" placeholder="1 - 10"><button class="primary" onclick="playGuess()">CHƠI</button><p id="guessResult"></p></div><div class="gameBox"><h3>🪙 Tung xu</h3><button class="primary" onclick="flipCoin()">TUNG XU</button><p id="coinResult"></p></div><div class="gameBox"><h3>✂️ Kéo Búa Bao</h3><div class="row"><button onclick="rps('kéo')">✂️</button><button onclick="rps('búa')">🪨</button><button onclick="rps('bao')">📄</button></div><p id="rpsResult"></p></div></div></div></div></section>
+
+<section id="chat" class="page"><div class="card chatCard"><div class="chatHead"><div><h2>💬 CHAT UGPHONE MOD</h2><small>Phòng chat chung — mọi máy dùng chung</small></div><span id="chatStatus">● Kết nối</span></div>
+<div id="chatMessages" class="chatMessages"></div><div class="chatInput"><input id="chatInput" maxlength="500" placeholder="Nhập tin nhắn..." onkeydown="if(event.key==='Enter')sendChat()"><label class="uploadBtn">📷 ẢNH<input id="chatImage" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden onchange="sendChatImage()"></label><button class="primary" onclick="sendChat()">GỬI</button></div>
+<small class="chatHint">Bạn cần đăng nhập để chat. Ảnh tối đa 1 MB.</small></div></section>
+
+<section id="admin" class="page"><div class="card adminCard"><h2>UGPHONE MOD <span class="adminTag">ADMIN</span></h2>
+<div id="adminLogin"><p>Đăng nhập bằng tài khoản Admin được cấu hình trên server.</p><input id="adminEmail" type="email" placeholder="Email Admin"><input id="adminPass" type="password" placeholder="Mật khẩu Admin"><button class="primary" onclick="adminLogin()">VÀO ADMIN</button></div>
+<div id="adminPanel" class="hidden"><div class="adminMenu"><button onclick="adminSection('overview')">📊 Tổng quan</button><button onclick="adminSection('posts')">🛍️ Đăng bài</button><button onclick="adminSection('keys')">🔑 KEY</button><button onclick="adminSection('users')">👥 User / Role / BAN</button><button onclick="adminSection('broadcast')">📢 Thông báo</button><button onclick="adminSection('chat')">💬 Chat</button><button onclick="adminSection('server')">🖥️ Server</button><button onclick="adminLogout()">🚪 Đăng xuất</button></div>
+<div class="stats"><div><b id="statUsers">0</b><small>Tài khoản</small></div><div><b id="statOnline">0</b><small>Đang hoạt động</small></div>
+<div><b id="statBanned">0</b><small>Đã BAN</small></div><div><b id="statKeys">0</b><small>KEY</small></div></div><hr>
+<div id="adminSectionKeys"><h3>🔑 Thêm KEY UGPHONE MOD</h3><div class="keyForm"><input id="newKey" placeholder="Ví dụ: UGPHONE-MOD-001"><input id="keyDate" type="date"><input id="keyLimit" type="number" min="1" placeholder="Số lượt">
+<button class="primary" onclick="addKey()">THÊM KEY</button></div><div id="keyList"></div></div><hr>
+<div id="adminSectionPosts"><h3>🛍️ Đăng bài / Menu</h3><div class="adminPostForm">
+<label>Tiêu đề<input id="postTitle" maxlength="80" placeholder="Ví dụ: file proxy Mr.mướp mới"></label>
+<label>Tag<input id="postTag" maxlength="24" placeholder="proxy / fake lag"></label>
+<label class="full">Link menu / link lấy hàng<input id="postLink" type="url" placeholder="https://..."></label>
+<label>Ảnh bài đăng<input id="postImage" type="file" accept="image/png,image/jpeg,image/webp"></label>
+<label>Chữ nút<input id="postButton" maxlength="30" value="👑 LẤY FREE (9999)"></label>
+<label><input id="postHot" type="checkbox" style="width:auto;margin-right:8px">HOT</label>
+<button class="primary full" onclick="publishPost()">ĐĂNG BÀI</button>
+</div><small class="chatHint">Sau khi đăng, bài sẽ xuất hiện ngay ở trang chủ theo dạng thẻ 2 cột giống mẫu.</small><div id="adminPostList"></div></div><hr>
+<div id="adminSectionBroadcast"><h3>📢 Gửi tới tất cả mọi người</h3><div class="keyForm"><input id="adminBroadcast" maxlength="500" placeholder="Thông báo sẽ hiện realtime trên mọi máy" onkeydown="if(event.key==='Enter')adminBroadcastSend()"><button class="primary" onclick="adminBroadcastSend()">GỬI TOÀN HỆ THỐNG</button></div><small class="chatHint">Tin được lưu vào database và phát realtime tới mọi máy.</small></div><hr><div id="adminSectionChat"><h3>💬 Chat gần đây</h3><div id="adminChat"></div></div><hr><div id="adminSectionUsers"><h3>👥 Tài khoản / hoạt động</h3><div id="users"></div></div><hr><div id="adminSectionClaims"><h3>🔗 Lịch sử lấy link</h3><div id="adminClaims"></div></div><hr><div id="adminSectionServer"><h3>🖥️ Trạng thái server</h3><div id="apiStatus" class="muted">API: đang kiểm tra…</div></div></div>
+</div></section>
+</main><div id="profileModal" class="modal hidden" onclick="if(event.target===this)closeProfile()"><div class="modalInner"><button class="modalClose" onclick="closeProfile()">✕</button><div id="profileModalBody"></div></div></div><div id="toast"></div><script src="config.js"></script><script src="app.js"></script>
+</body></html>
